@@ -3,7 +3,14 @@ terraform {
   required_providers {
     aws = ">= 4.0"
   }
+
+  backend "s3" {
+    bucket = "lcaldeirini-tf-aws-bucket"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
 }
+}
+
 
 provider "aws" {
   region = "us-east-1"
@@ -36,3 +43,11 @@ resource "aws_instance" "web" {
   }
 }
 
+resource "aws_instance" "web2" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test_tf"
+  }
+}
