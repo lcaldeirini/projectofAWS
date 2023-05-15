@@ -36,7 +36,8 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+  instance_type = var.inst_type
+  disable_api_termination = var.disable_api_termination
 
   tags = {
     Name = "terraform_aws"
@@ -46,6 +47,7 @@ resource "aws_instance" "web" {
 resource "aws_instance" "web2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
+  disable_api_termination = var.disable_api_termination
 
   tags = {
     Name = "test_tf"
