@@ -9,10 +9,10 @@ variable "disable_api_termination" {
     default = true
 }
 
-variable "int_names" {
-    description = "Lista de nomes para instancias"
-    type        = list(string)
-    default     = ["-", "-", "-", "-"]
+# variable "int_names" {
+#     description = "Lista de nomes para instancias"
+#     type        = list(string)
+#     default     = ["-", "-", "-", "-"]
 
-}
+# }
 
